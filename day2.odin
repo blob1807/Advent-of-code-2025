@@ -97,13 +97,14 @@ day_2_part_2_optimized :: proc(file: string) -> (res: u64) {
 
         for n in x..=y {
             size := digit_count(n)
+            // if odd the first case will always be false
             half := size / 2 + size % 2
 
-            // if odd the first case will always be false
             loop: for pos in half..<size {
                 if size % (size-pos) != 0 {
                     continue
                 }
+                
                 pow_l := pow_10[pos]
                 l := n / pow_l
                 rb := n - (l * pow_l)
